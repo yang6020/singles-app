@@ -6,6 +6,7 @@ import Header from "../../components/Header/Header";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../../../../imports/ui/routes/index";
 import '../../../../client/main.html'
+import { Matches } from "../../../api/matches";
 class App extends Component {
   
   render() {
@@ -33,9 +34,11 @@ App.defaultProps = {
 
 export default withTracker(() => {
   Meteor.subscribe("singles");
+  Meteor.subscribe("matches");
   return {
     currentUser: Meteor.user(), // NEW!
     currentUserId: Meteor.userId(), // NEW!
-    singles: Singles.find().fetch()
+    singles: Singles.find().fetch(),
+    matches: Matches().fetch()
   };
 })(App);

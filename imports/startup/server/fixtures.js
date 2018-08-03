@@ -6,7 +6,7 @@ Meteor.startup(() => {
     Singles.insert({
       name: "Justin",
       bio: "hi im justin",
-      SR: []
+      
     });
   }
 });
