@@ -6,7 +6,7 @@ import React, { Fragment } from "react";
 import Header from "../components/Header/Header";
 export default () => (
   <Fragment>
-    <Header />
+    {/* <Header /> */}
     <Switch>
       <Route exact path="/singles" component={Singles} />
       <Route exact path="/profile" component={Profile} />
