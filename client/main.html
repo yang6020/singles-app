@@ -1,0 +1,30 @@
+<head>
+  <title>BOOOOOOM Mike Meteor-Files: File Streaming</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+</body>
+
+
+<template name="sounds">
+  {{#if user}} {{> uploadForm}} {{> files }} {{/if}}
+</template>
+
+<template name="uploadForm">
+  {{#with currentUpload}} Uploading
+  <b>{{file.name}}</b>:
+  <span id="progress">{{progress.get}}%</span>
+  {{else}}
+  <input id="fileInput" type="file" /> {{/with}}
+</template>
+
+
+<template name="files">
+  {{#with audioFile}}
+  <audio controls preload="auto">
+    <source src="{{link}}" type="{{type}}">
+  </audio>
+  {{/with}}
+</template>
