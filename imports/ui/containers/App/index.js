@@ -5,6 +5,8 @@ import { withTracker } from "meteor/react-meteor-data";
 import PropTypes from "../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/prop-types";
 import AccountsUIWrapper from "../../components/AccountsWrapper";
 import Header from "../../components/Header";
+
+
 class App extends Component {
   constructor(props) {
     super(props);
