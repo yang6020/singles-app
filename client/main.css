@@ -1,4 +1,7 @@
-body {
-  padding: 10px;
-  font-family: sans-serif;
+body{
+ background-color: #212121;
+ color: white;
+ padding:10px;
+ font-family: sans-serif
+
 }

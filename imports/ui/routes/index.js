@@ -5,7 +5,7 @@ import LoginSignup from "../pages/LoginSignup/LoginSignup";
 import React, { Fragment } from "react";
 import Header from "../components/Header/Header";
 export default () => (
-  <Fragment>
+  <div>
     {/* <Header /> */}
     <Switch>
       <Route exact path="/singles" component={Singles} />
@@ -13,5 +13,5 @@ export default () => (
       <Route exact path="/login" component={LoginSignup} />
       <Redirect to="/login" />
     </Switch>
-  </Fragment>
+  </div>
 );

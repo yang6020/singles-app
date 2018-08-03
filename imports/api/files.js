@@ -1,7 +1,8 @@
 import { FilesCollection } from "meteor/ostrio:files";
+import { Meteor } from 'meteor/meteor'
 
-const Audio = new FilesCollection({
-  collectionName: "Audio",
+export const Audio = new FilesCollection({
+  collectionName: "audio",
   allowClientCode: false, // Disallow remove files from Client
   onBeforeUpload(file) {
     // Allow upload files under 10MB
@@ -12,4 +13,9 @@ const Audio = new FilesCollection({
   }
 });
 
-export default Audio;
+if (Meteor.isServer) {
+  Meteor.publish("files.audio.all", function() {
+    return Audio.find().cursor
+  })
+}
+
