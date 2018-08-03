@@ -39,6 +39,6 @@ export default withTracker(() => {
     currentUser: Meteor.user(), // NEW!
     currentUserId: Meteor.userId(), // NEW!
     singles: Singles.find().fetch(),
-    matches: Matches().fetch()
+    matches: Matches.find().fetch()
   };
 })(App);
