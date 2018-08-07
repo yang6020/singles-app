@@ -9,7 +9,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../../../../imports/ui/routes/index";
 import "../../../../client/main.html";
 import { Matches } from "../../../api/matches";
-import {Audio} from "../../../api/files"
+
 class App extends Component {
   render() {
     return (
@@ -79,10 +79,6 @@ export default withTracker(() => {
   Meteor.subscribe("singles");
   Meteor.subscribe("matches");
   Meteor.subscribe("files.audio.all");
-<<<<<<< HEAD
-  
-=======
->>>>>>> 4c5958dcb0c88a920d9e4337ebb434cfc70010a2
   return {
     currentUser: Meteor.user(), // NEW!
     currentUserId: Meteor.userId(), // NEW!
@@ -90,9 +86,5 @@ export default withTracker(() => {
     singles: Singles.find().fetch(),
     matches: Matches.find().fetch(),
     audio: Audio.find().fetch()
-<<<<<<< HEAD
-    
-=======
->>>>>>> 4c5958dcb0c88a920d9e4337ebb434cfc70010a2
   };
 })(App);
