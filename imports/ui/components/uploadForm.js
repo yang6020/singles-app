@@ -58,8 +58,15 @@ Template.sounds.helpers({
 
 Template.files.helpers({
   audioFile() {
+    console.log("Andreisadfasdfasd", Audio.collection._collection._docs)
     return Audio.findOne({ userId: Meteor.userId() });
+    
   },
+  allAudioFiles(){
+    return Audio.find();
+  },
+
+
   user() {
     return Meteor.userId();
   }
@@ -85,6 +92,7 @@ Template.uploadForm.events({
       // });
 
       upload.on("end", function(error, fileObj) {
+        console.log("File Object",fileObj)
         if (error) {
           alert("Error during upload: " + error);
         } else {
@@ -94,6 +102,7 @@ Template.uploadForm.events({
       });
 
       upload.start();
+      
     }
   }
 });
