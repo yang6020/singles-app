@@ -6,10 +6,13 @@ import { Form, Field } from 'react-final-form'
 // const validate = values => { };
 // const onSubmit = values => { };
 
-const ProfileCard = ({inputRef, submitProfile}) => {
+const ProfileCard = ({inputRef, submitProfile,audio}) => {
 
     return (
         <div className="add-bio">
+        <div>
+        {audio}
+        </div>
         <form onSubmit = {event => submitProfile(event)}>
                 <input type="text" ref={inputRef} placeholder="Add Bio Here"/>
                     <span>Enter To Add</span>
