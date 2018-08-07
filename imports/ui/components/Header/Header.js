@@ -44,7 +44,7 @@ function ButtonAppBar(props) {
         <Toolbar className={classes.barContainer}>
 
           <Link to="/profile">
-            <PersonIcon className={classes.icon} style={{ fontSize: 50 }} color={'action'} />
+            <PersonIcon className={classes.icon} style={{ fontSize: 50 }} color={'actionmeteor'} />
           </Link>
 
           <Link to="/singles">
