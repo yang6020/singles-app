@@ -8,7 +8,11 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../../../../imports/ui/routes/index";
 import "../../../../client/main.html";
 import { Matches } from "../../../api/matches";
+<<<<<<< HEAD
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
+=======
+
+>>>>>>> 295f1e2124dc18114c475b30c5fdbc1943ef5f18
 class App extends Component {
   render() {
     return (

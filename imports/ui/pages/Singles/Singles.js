@@ -1,7 +1,15 @@
 import React from "react";
+import SinglesQueueCard from "../../components/SinglesQueueCard/SinglesQueueCard"
 
 const Singles = () => {
-  return <p>BOOMBOOMBOOMBOMBOOMBOBM</p>;
+  return(
+    <div>
+    <p>BOOMBOOMBOOMBOMBOOMBOBM</p>
+    <SinglesQueueCard/>
+    </div>
+
+  ) ;
+
 };
 
 export default Singles;
