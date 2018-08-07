@@ -17,13 +17,44 @@ const styles = theme => ({
 
 function MatchPage(props) {
   const { classes } = props;
-  function matches() {
-    return Matches.find({}).fetch();
+  const matchesTotal = Matches.find().fetch();
+  const owner = Meteor.userId();
+
+  function filteredMatches(matchesTotal, owner) {
+    return matchesTotal.filter(match => {
+      return match.userId1 === owner || match.userId2 === owner;
+    });
   }
+
+  function Match(matchesTotal, owner) {
+    const yourMatches = filteredMatches(matchesTotal, owner);
+    const matchResult = [];
+    const userSwipes = [];
+    yourMatches.map(match => {
+      if (match.userId1 == owner) {
+        userSwipes.push(match.userId2);
+      }
+    });
+    yourMatches.map(match => {
+      if (match.userId2 == owner && userSwipes.includes(match.userId1))
+        matchResult.push(match);
+    });
+
+    // for (let i = 0; i <= yourMatches.length; i++) {
+    //   if (yourMatches[i].userId1 === owner) {
+    //     if (yourMatches[i].find(swipedBack(yourMatches[i].userId2)) !== -1) {
+    //       matchResult.push(yourMatches[i]);
+    //     }
+    //   }
+    // }
+
+    return matchResult;
+  }
+
   return (
     <div className={classes.root}>
       <List component="nav">
-        <MatchItem matches={matches()} />
+        <MatchItem matches={Match(matchesTotal, owner)} />
       </List>
       <Form
         onSubmit={(values, form) => {
@@ -31,6 +62,7 @@ function MatchPage(props) {
             userId1: values.userId1,
             userId2: values.userId2
           });
+          // console.log(matchesTotal);
           form.reset();
         }}
         initialValues={{}}
@@ -45,7 +77,7 @@ function MatchPage(props) {
                       width: "100%",
                       paddingBottom: 20
                     }}
-                    placeholder="Name your Item"
+                    placeholder="User"
                     {...input}
                   />
                 )}
@@ -61,7 +93,7 @@ function MatchPage(props) {
                 {({ input, meta }) => (
                   <TextField
                     style={{ width: "100%" }}
-                    placeholder="Name your description"
+                    placeholder="Swiped on"
                     multiline
                     {...input}
                   />

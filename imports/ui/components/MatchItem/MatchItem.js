@@ -20,7 +20,7 @@ const MatchItem = ({ matches }) => {
       <ListItemIcon>
         <StarIcon />
       </ListItemIcon>
-      <ListItemText inset primary={match.userId2} />
+      <ListItemText inset primary={`You matched with ${match.userId1}!`} />
     </ListItem>
   ));
 };
