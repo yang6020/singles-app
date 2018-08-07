@@ -10,9 +10,15 @@ import { TextField, Button } from "@material-ui/core";
 const styles = theme => ({
   root: {
     width: "100%",
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
+    maxWidth: 700,
+    backgroundColor: theme.palette.background.paper,
+    margin: '0 auto',
+    marginTop: '30px'
+  },
+  matchItem: {
+    border: '2px solid yellow',
   }
+  
 });
 
 function MatchPage(props) {
@@ -53,10 +59,11 @@ function MatchPage(props) {
 
   return (
     <div className={classes.root}>
-      <List component="nav">
-        <MatchItem matches={Match(matchesTotal, owner)} />
+      <List component="nav" className={classes.list}>
+        <MatchItem matches={Match(matchesTotal, owner)} className={classes.matchItem}/>
       </List>
       <Form
+        className={classes.form}
         onSubmit={(values, form) => {
           Meteor.call("matches.addMatch", {
             userId1: values.userId1,
@@ -101,7 +108,7 @@ function MatchPage(props) {
               </Field>
             </div>
             <div style={{ paddingTop: 20 }}>
-              <Button
+              <Button               
                 variant="contained"
                 disabled={submitting || pristine}
                 color="primary"
