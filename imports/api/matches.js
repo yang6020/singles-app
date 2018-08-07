@@ -8,3 +8,9 @@ if (Meteor.isServer) {
     return Matches.find();
   });
 }
+
+Meteor.methods({
+  "matches.addMatch"(match) {
+    Matches.insert(match);
+  }
+});
