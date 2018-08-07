@@ -13,6 +13,7 @@
 </template>
 
 <template name="uploadForm">
+   
   {{#with currentUpload}} Uploading
   <b>{{file.name}}</b>:
   <span id="progress">{{progress.get}}%</span>
@@ -25,6 +26,7 @@
   {{#with audioFile}}
   <audio controls preload="auto">
     <source src="{{link}}" type="{{type}}">
+      {console.log("BOBS",Link)}
   </audio>
   {{/with}}
 </template>
