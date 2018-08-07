@@ -1,5 +1,5 @@
 import { Mongo } from "meteor/mongo";
-import { Meteor } from 'meteor/meteor'
+import { Meteor } from "meteor/meteor";
 
 export const Matches = new Mongo.Collection("matches");
 
@@ -8,3 +8,9 @@ if (Meteor.isServer) {
     return Matches.find();
   });
 }
+
+Meteor.methods({
+  "matches.addMatch"(match) {
+    Matches.insert(match);
+  }
+});

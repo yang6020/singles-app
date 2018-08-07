@@ -1,5 +1,5 @@
 import { FilesCollection } from "meteor/ostrio:files";
-import { Meteor } from 'meteor/meteor'
+import { Meteor } from "meteor/meteor";
 
 export const Audio = new FilesCollection({
   collectionName: "audio",
@@ -15,7 +15,6 @@ export const Audio = new FilesCollection({
 
 if (Meteor.isServer) {
   Meteor.publish("files.audio.all", function() {
-    return Audio.find().cursor
-  })
+    return Audio.find().cursor;
+  });
 }
-

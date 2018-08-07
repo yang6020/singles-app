@@ -78,6 +78,7 @@ Template.uploadForm.events({
       // We upload only one file, in case
       // multiple files were selected
       console.log("Uploading....");
+      console.log(e.currentTarget.files[0]);
       const upload = Audio.insert(
         {
           file: e.currentTarget.files[0],
