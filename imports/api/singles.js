@@ -8,3 +8,15 @@ if (Meteor.isServer) {
     return Singles.find();
   });
 }
+
+Meteor.methods({
+  'singles.submitProfile'(singles)  {
+      if (singles.owner !== this.userId) {
+          throw new Meteor.Error (
+              'todos.handleToDoSubmit.not-authorized',
+              'You are not allowed to add to-dos for other users'
+          )
+      }
+      singles.insert(singles)
+  }
+});
