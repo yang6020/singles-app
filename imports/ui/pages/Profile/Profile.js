@@ -1,11 +1,15 @@
 import React from "react";
-import ProfileCard from '../../components/ProfileCard/ProfileCard'
+import ProfileCard from "../../components/ProfileCard/ProfileCard";
+import UploadForm from "../../components/uploadForm";
 
 const Profile = () => {
-  return (<div>
-    <p>BAMBABMABMAMMBA</p>
-    <ProfileCard/>
-  </div>);
+  return (
+    <div>
+      <p>BAMBABMABMAMMBA</p>
+      <ProfileCard />
+      <UploadForm />
+    </div>
+  );
 };
 
 export default Profile;
