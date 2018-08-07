@@ -1,4 +1,4 @@
-import SinglesPage from "../pages/SinglesPage/SinglesPage";
+import Singles from "../pages/Singles/Singles";
 import Profile from "../pages/Profile/Profile";
 import { Redirect, Route, Switch } from "react-router";
 import LoginSignup from "../pages/LoginSignup/LoginSignup";
@@ -9,7 +9,7 @@ export default () => (
   <div>
     <Header />
     <Switch>
-      <Route exact path="/singles" component={SinglesPage} />
+      <Route exact path="/singles" component={Singles} />
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/login" component={LoginSignup} />
       <Route exact path="/matches" component={MatchPage} />
@@ -17,3 +17,4 @@ export default () => (
     </Switch>
   </div>
 );
+    

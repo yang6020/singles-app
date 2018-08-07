@@ -37,7 +37,6 @@ function SinglesPage(props) {
 
   return (
     <div className={classes.root}>
-      <p>{showMeSingles()}</p>
       <SinglesQueueCard />
 
       <Form
@@ -45,9 +44,9 @@ function SinglesPage(props) {
           Meteor.call("singles.addSingle", {
             name: values.name,
             bio: values.bio,
-            _id: owner
+            _id: "bbbb"
           });
-          // console.log(matchesTotal);
+          console.log(showMeSingles());
           form.reset();
         }}
         initialValues={{}}
