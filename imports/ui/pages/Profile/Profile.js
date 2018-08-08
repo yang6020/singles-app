@@ -1,30 +1,59 @@
 import React from "react";
-import ProfileCard from "../../components/ProfileCard/ProfileCard";
-import UploadForm from "../../components/uploadForm";
-import { Singles } from "../../../api/singles";
 import SinglesQueueCard from "../../components/SinglesQueueCard/SinglesQueueCard";
+import { Singles } from "../../../api/singles";
+import { Form, Field } from "react-final-form";
+import { TextField, Button } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+import TestCard from "./../../components/TestCard/TestCard";
+import Steppers from "./../../components/Steppers/Steppers";
+import SwipeableViews from "react-swipeable-views";
+import ProfileCard from "../../components/ProfileCard/ProfileCard";
 
-const Profile = props => {
+const styles = theme => ({
+  root: {
+    width: "100%",
+    maxWidth: 360,
+    // backgroundColor: theme.palette.background.paper,
+    backgroundColor: "green"
+  }
+});
+
+// singlesQueue.map(single=>{
+//   <ProfileCard name={single.name} bio={single.bio} audio={AudioOfUser} isProfile={false}/>
+// })
+
+// <ProfileCard name={single.name} bio={single.bio} audio={AudioOfUser} />
+
+function Profile(props) {
   const { classes } = props;
   const owner = Meteor.userId();
+  const SinglesData = Singles.find().fetch();
   let single = Singles.find({ _id: owner }).fetch();
-  console.log(single[0]);
-  // function singleData (single){
-  //   let nameBio=[]
-  //   nameBio.push(single[0]["name"])
+  // const AudioOfUser = Audio.find({userId:owner})
 
-  //   return nameBio
-  // }
+  function showMeSingles() {
+    const singlesQueue = [];
+    SinglesData.filter(single => {
+      single._id !== owner;
+    }).map(single => {
+      singlesQueue.push(single);
+    });
+    return singlesQueue;
+  }
+
   return (
-    <div>
-      {/* className={classes.root} */}
-      {/*
+    <div className={classes.root}>
+      <ProfileCard
+        name={single[0] && single[0].name}
+        bio={single[0] && single[0].bio}
+      />
+      <SinglesQueueCard />
       <Form
         onSubmit={(values, form) => {
           Meteor.call("singles.addSingle", {
             name: values.name,
             bio: values.bio,
-            _id: owner + 9
+            _id: owner
           });
           console.log(showMeSingles());
           form.reset();
@@ -72,18 +101,9 @@ const Profile = props => {
           </form>
         )}
       />
-      <TestCard />
-      <Steppers /> */}
-
-      <p>BAMBABMABMAMMBA</p>
-      <SinglesQueueCard />
-      <ProfileCard
-        name={single[0] && single[0].name}
-        bio={single[0] && single[0].bio}
-      />
-      <UploadForm />
+      <Steppers />
     </div>
   );
-};
+}
 
-export default Profile;
+export default withStyles(styles)(Profile);
