@@ -10,9 +10,12 @@ import { TextField, Button } from "@material-ui/core";
 const styles = theme => ({
   root: {
     width: "100%",
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
-  }
+    maxWidth: 700,
+    backgroundColor: theme.palette.background.paper,
+    margin: '0 auto',
+    marginTop: '30px',
+  },
+  
 });
 
 function MatchPage(props) {
