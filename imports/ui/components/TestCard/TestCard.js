@@ -18,8 +18,11 @@ import ClearIcon from '@material-ui/icons/Clear';
 
 const styles = {
   card: {
+    height: 400,
     maxWidth: 345,
     marginTop: 50,
+
+
   },
   media: {
     height: 0,
@@ -32,8 +35,9 @@ const styles = {
       margin: '0 auto'
   },
   audioCard: {
-      
-
+      display: 'flex',
+      justifyContent: 'center',
+      paddingTop: '20px',
   }
 };
 
@@ -43,7 +47,7 @@ function SimpleMediaCard(props) {
     <div>
       <Card className={classes.card}>
         <div className={classes.audioCard}>
-            <SinglesQueueCard className={classes.audioCard}/>
+            <SinglesQueueCard />
         </div>
 
         <CardHeader
