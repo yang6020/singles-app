@@ -10,6 +10,10 @@ import SinglesQueueCard from "../../components/SinglesQueueCard/SinglesQueueCard
 import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import Gravatar from 'react-gravatar';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ClearIcon from '@material-ui/icons/Clear';
+
+
 
 
 const styles = {
@@ -26,6 +30,10 @@ const styles = {
   },
   button: {
       margin: '0 auto'
+  },
+  audioCard: {
+      
+
   }
 };
 
@@ -34,7 +42,10 @@ function SimpleMediaCard(props) {
   return (
     <div>
       <Card className={classes.card}>
-        <SinglesQueueCard />
+        <div className={classes.audioCard}>
+            <SinglesQueueCard className={classes.audioCard}/>
+        </div>
+
         <CardHeader
             avatar={
                 <Gravatar className={classes.avatar} email="mathews.kyle@gmail.com" />
@@ -43,19 +54,20 @@ function SimpleMediaCard(props) {
             subheader="member since August 1, 2018"
         />
         <CardContent>
-          <Typography gutterBottom variant="headline" component="h2">
-            About
-          </Typography>
           <Typography component="p">
             Here we will put the Bio
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button  variant="contained" color="secondary" className={classes.button}>
-            Match
+
+      </Card>
+      <CardActions>
+          <Button  variant="fab" color="primary" className={classes.button}>
+            <ClearIcon />
+          </Button>
+          <Button  variant="fab" color="secondary" className={classes.button}>
+            <FavoriteIcon />
           </Button>
         </CardActions>
-      </Card>
     </div>
   );
 }
