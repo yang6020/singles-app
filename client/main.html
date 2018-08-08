@@ -9,7 +9,7 @@
 
 
 <template name="sounds">
-  {{#if user}}  {{> uploadForm}} {{> files }} {{/if}}
+  {{#if user}} {{> uploadForm}} {{> files }} {{/if}}
 </template>
 
 <template name="uploadForm">
@@ -26,6 +26,7 @@
   {{#with audioFile}}
   <audio controls preload="auto">
     <source src="{{link}}" type="{{type}}">
+      {console.log("BOBS",Link)}
   </audio>
   {{/with}}
 </template>

@@ -1,5 +1,5 @@
 import { Mongo } from "meteor/mongo";
-import { Meteor } from 'meteor/meteor'
+import { Meteor } from "meteor/meteor";
 
 export const Singles = new Mongo.Collection("singles");
 
@@ -8,3 +8,9 @@ if (Meteor.isServer) {
     return Singles.find();
   });
 }
+
+Meteor.methods({
+  "singles.addSingle"(single) {
+    Singles.insert(single);
+  }
+});

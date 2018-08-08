@@ -1,21 +1,26 @@
-import UploadForm from "../../components/uploadForm";
-import React,{Component} from "react";
-import { Blaze } from "meteor/blaze";
-import { withTracker } from "meteor/react-meteor-data";
-import { Template } from "meteor/templating";
+
+
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import { Template } from "meteor/templating";
+import { Blaze } from "meteor/blaze";
+
+import { withTracker } from "meteor/react-meteor-data";
+
 class LoginSignup extends Component {
   componentDidMount() {
     // Use Meteor Blaze to render login button
     this.renderForm();
   }
   renderForm() {
+  
     this.login = Blaze.render(
       Template.loginButtons,
       ReactDOM.findDOMNode(this.refs.login)
     );
   }
   cleanForm() {
+  
     Blaze.remove(this.login);
   }
   componentWillUnmount() {
@@ -30,7 +35,7 @@ class LoginSignup extends Component {
   }
 }
 
-export default (LoginSignupContainer= withTracker(() => {
+export default (LoginSignupContainer = withTracker(() => {
   return {
     currentUser: Meteor.user()
   };
