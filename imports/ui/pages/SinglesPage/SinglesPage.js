@@ -49,7 +49,7 @@ function SinglesPage(props) {
           Meteor.call("singles.addSingle", {
             name: values.name,
             bio: values.bio,
-            _id: "bbbb"
+            _id: owner
           });
           console.log(showMeSingles());
           form.reset();
