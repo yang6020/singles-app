@@ -8,6 +8,7 @@ import TestCard from "./../../components/TestCard/TestCard";
 import Steppers from "./../../components/Steppers/Steppers";
 import SwipeableViews from "react-swipeable-views";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
+import UploadForm from "../../components/uploadForm";
 
 const styles = theme => ({
   root: {
@@ -47,7 +48,8 @@ function Profile(props) {
         name={single[0] && single[0].name}
         bio={single[0] && single[0].bio}
       />
-      <SinglesQueueCard />
+      {/* <SinglesQueueCard /> */}
+      <UploadForm />
       <Form
         onSubmit={(values, form) => {
           Meteor.call("singles.addSingle", {
