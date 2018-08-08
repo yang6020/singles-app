@@ -8,37 +8,53 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import GroupIcon from '@material-ui/icons/Group';
 import PersonIcon from '@material-ui/icons/Person';
-import WhatshotIcon from '@material-ui/icons/Whatshot';
+import MicIcon from '@material-ui/icons/Mic';
 import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import SmsIcon from '@material-ui/icons/Sms';
 
 
 const styles = {
   barContainer: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    backgroundColor:'#4caf50'
   },
+  // icon:{
+  //   color:'yellow'
+  // }
+
 };
+
+function HomeIcon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
+  );
+}
+
 
 function ButtonAppBar(props) {
   const { classes } = props;
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+    <div >
+      <AppBar className={classes.root} position="static">
         <Toolbar className={classes.barContainer}>
 
           <Link to="/profile">
-            <PersonIcon className={classes.icon} style={{ fontSize: 50 }} color={'actionmeteor'} />
+            <PersonIcon className={classes.icon} style={{ fontSize: 50 }} color={'action'} />
           </Link>
 
           <Link to="/singles">
-            <WhatshotIcon className={classes.icon}  style={{ fontSize: 50 }} color={'secondary'}
+            <MicIcon className={classes.icon}  style={{ fontSize: 50 }}
+             color={'primary'}
             />
           </Link>
 
           <Link to="/matches">
-            <GroupIcon className={classes.icon} style={{ fontSize: 50 }} />
+            <SmsIcon className={classes.icon} style={{ fontSize: 50}} color={'secondary'} />
           </Link>
 
         </Toolbar>

@@ -16,10 +16,14 @@ class UploadForm extends Component {
       ReactDOM.findDOMNode(this.refs.sounds)
     );
 
+    this.login = Blaze.render(
+      Template.loginButtons,
+      ReactDOM.findDOMNode(this.refs.login)
+    );
   }
   cleanForm() {
     Blaze.remove(this.sounds); // Clean up Blaze view
-   
+    Blaze.remove(this.login);
   }
   componentWillUnmount() {
     this.cleanForm();
@@ -27,6 +31,8 @@ class UploadForm extends Component {
   render() {
     return (
       <div>
+        <span ref="login" />
+
         <div>
           <span ref="sounds" />
         </div>
@@ -66,14 +72,13 @@ Template.files.helpers({
   }
 });
 
-
 Template.uploadForm.events({
   "change #fileInput"(e, template) {
     if (e.currentTarget.files && e.currentTarget.files[0]) {
       // We upload only one file, in case
       // multiple files were selected
       console.log("Uploading....");
-      console.log("PAAAM",e.currentTarget.files[0]);
+      console.log(e.currentTarget.files[0]);
       const upload = Audio.insert(
         {
           file: e.currentTarget.files[0],
@@ -82,34 +87,6 @@ Template.uploadForm.events({
         },
         false
       );
-      
-      // const signedinUserId = Meteor.userId();
-      // let audiosObject = Audio.collection._collection._docs;
-      // let arrayOfObj = Object.values(audiosObject._map);
-      // let userAudioObj = arrayOfObj.filter(
-      //   audio => audio.userId === signedinUserId
-      // );
-      // let userAudioId = userAudioObj.map(
-      //   audio => audio._id
-        
-      // );
-
-      // const upload = Audio.update(
-      //   {
-      //     _id: userAudioUrl,
-          
-      //   },
-       
-      //   {$set:{  file: e.currentTarget.files[0],
-      //         streams: "dynamic",
-      //         chunkSize: "dynamic"}
-      //       },
-      //         {upsert:true}
-      // )
-      // console.log("AUDIO", userAudioId)
-      // console.log("Inserts",e.currentTarget.files[0]);
-      
-
 
       // upload.on('start', function () {
       //   template.currentUpload.set(this);
