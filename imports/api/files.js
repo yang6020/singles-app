@@ -1,9 +1,13 @@
 import { FilesCollection } from "meteor/ostrio:files";
 import { Meteor } from "meteor/meteor";
 
+
+
 export const Audio = new FilesCollection({
+  // debug: true,
+  disableUpload: false,
   collectionName: "audio",
-  allowClientCode: false, // Disallow remove files from Client
+  allowClientCode: true, // Disallow remove files from Client
   onBeforeUpload(file) {
     // Allow upload files under 10MB
     if (file.size <= 10485760 && /mp4|wav|mp3/i.test(file.extension)) {
