@@ -16,27 +16,19 @@ class UploadForm extends Component {
       ReactDOM.findDOMNode(this.refs.sounds)
     );
 
-    this.login = Blaze.render(
-      Template.loginButtons,
-      ReactDOM.findDOMNode(this.refs.login)
-    );
   }
   cleanForm() {
     Blaze.remove(this.sounds); // Clean up Blaze view
-    Blaze.remove(this.login);
+ 
   }
   componentWillUnmount() {
     this.cleanForm();
   }
   render() {
     return (
-      <div>
-        <span ref="login" />
-
         <div>
           <span ref="sounds" />
         </div>
-      </div>
     ); // Render a placeholder
   }
 }

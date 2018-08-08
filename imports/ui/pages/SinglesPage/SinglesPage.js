@@ -4,12 +4,18 @@ import { Singles } from "../../../api/singles";
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
+import TestCard from './../../components/TestCard/TestCard';
+import Steppers from './../../components/Steppers/Steppers';
+import SwipeableViews from 'react-swipeable-views';
+ 
 
 const styles = theme => ({
   root: {
     width: "100%",
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
+    // backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'green',
+    
   }
 });
 
@@ -38,7 +44,6 @@ function SinglesPage(props) {
   return (
     <div className={classes.root}>
       <SinglesQueueCard />
-
       <Form
         onSubmit={(values, form) => {
           Meteor.call("singles.addSingle", {
@@ -89,9 +94,11 @@ function SinglesPage(props) {
                 Match
               </Button>
             </div>
-          </form>
-        )}
+          </form>          
+        )}        
       />
+      <TestCard />
+      <Steppers />
     </div>
   );
 }
