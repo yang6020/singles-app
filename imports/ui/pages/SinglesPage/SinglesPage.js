@@ -31,25 +31,15 @@ function SinglesPage(props) {
   // const SinglesData = Singles.find().fetch();
   // const AudioOfUser = Audio.find({userId:owner})
   const SinglesData = Singles.find({ _id: { $ne: owner } }).fetch();
-  function showMeSingles() {
-    let SinglesData = Singles.find({ _id: { $ne: owner } }).fetch();
-    return SinglesData;
-  }
-
-  // function showMeSingles() {
-  //   const singlesQueue = [];
-  //   SinglesData.filter(single => {
-  //     single._id !== owner;
-  //   }).map(single => {
-  //     singlesQueue.push(single);
-  //   });
-  //   return singlesQueue;
-  // }
 
   return (
     <Grid>
       {SinglesData.map(single => (
-        <ProfileCard name={single.name} bio={single.bio} />
+        <ProfileCard
+          name={single.name}
+          bio={single.bio}
+          audio={<SinglesQueueCard userId={single._id} />}
+        />
       ))}
     </Grid>
   );

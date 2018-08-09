@@ -47,9 +47,9 @@ function Profile(props) {
       <ProfileCard
         name={single[0] && single[0].name}
         bio={single[0] && single[0].bio}
+        audio={<UploadForm />}
       />
       {/* <SinglesQueueCard /> */}
-      <UploadForm />
       <Form
         onSubmit={(values, form) => {
           Meteor.call("singles.addSingle", {
@@ -103,7 +103,6 @@ function Profile(props) {
           </form>
         )}
       />
-      <Steppers />
     </div>
   );
 }

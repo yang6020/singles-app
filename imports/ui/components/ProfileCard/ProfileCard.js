@@ -4,14 +4,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { Singles } from "../../../api/singles";
-import { Tracker } from "meteor/tracker";
-import CardHeader from "@material-ui/core/CardHeader";
-import SinglesQueueCard from "../SinglesQueueCard/SinglesQueueCard";
 
 const styles = {
   card: {
@@ -23,11 +18,11 @@ const styles = {
   }
 };
 
-const ProfileCard = ({ classes, name, bio }) => {
+const ProfileCard = ({ classes, name, bio, audio }) => {
   return (
     <Card className={classes.card}>
       <CardContent>
-        <SinglesQueueCard />
+        {audio}
         <Typography gutterBottom variant="headline" component="h2">
           {name}
         </Typography>
