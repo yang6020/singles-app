@@ -6,13 +6,13 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import GroupIcon from "@material-ui/icons/Group";
 import PersonIcon from "@material-ui/icons/Person";
-import MicIcon from "@material-ui/icons/Mic";
+import Queue_musicIcon from "@material-ui/icons/Queuemusic";
 import blue from "@material-ui/core/colors/blue";
 import red from "@material-ui/core/colors/red";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import SmsIcon from "@material-ui/icons/Sms";
+import HeaderMenue from "./HeaderMenue/HeaderMenue"
 
 const styles = {
   barContainer: {
@@ -20,9 +20,7 @@ const styles = {
     justifyContent: "space-between",
     backgroundColor: "#4caf50"
   }
-  // icon:{
-  //   color:'yellow'
-  // }
+
 };
 
 function HomeIcon(props) {
@@ -39,16 +37,10 @@ function ButtonAppBar(props) {
     <div>
       <AppBar className={classes.root} position="static">
         <Toolbar className={classes.barContainer}>
-          <Link to="/profile">
-            <PersonIcon
-              className={classes.icon}
-              style={{ fontSize: 50 }}
-              color={"action"}
-            />
-          </Link>
+          <HeaderMenue />
 
           <Link to="/singles">
-            <MicIcon
+            <Queue_musicIcon
               className={classes.icon}
               style={{ fontSize: 50 }}
               color={"primary"}

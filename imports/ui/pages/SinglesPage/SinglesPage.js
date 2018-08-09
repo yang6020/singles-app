@@ -14,7 +14,8 @@ const styles = theme => ({
     width: "100%",
     maxWidth: 360,
     // backgroundColor: theme.palette.background.paper,
-    backgroundColor: "green"
+    backgroundColor: "green",
+    margin: '0 auto',
   }
 });
 
@@ -32,17 +33,19 @@ function SinglesPage(props) {
   const SinglesData = Singles.find({ _id: { $ne: owner } }).fetch();
 
   return (
-    <Grid>
-      {SinglesData.map(single => (
-        <ProfileCard
-          name={single.name}
-          bio={single.bio}
-          audio={<SinglesQueueCard userId={single._id} />}
-          email={single.email}
-          isProfile={false}
-        />
-      ))}
-    </Grid>
+    <div className={classes.root}>
+      <Grid>
+        {SinglesData.map(single => (
+          <ProfileCard
+            name={single.name}
+            bio={single.bio}
+            audio={<SinglesQueueCard userId={single._id} />}
+            email={single.email}
+            isProfile={false}
+          />
+        ))}
+      </Grid>
+    </div>
   );
 }
 
