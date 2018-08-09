@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -7,6 +6,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Gravatar from "react-gravatar";
 import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
+import { ENGINE_METHOD_PKEY_ASN1_METHS } from "constants";
+import { Typography } from "../../../../node_modules/@material-ui/core";
 
 const styles = theme => ({
   root: {
@@ -33,17 +34,13 @@ const MatchItem = ({ singles, classes }) => {
               email="mathews.kyle@gmail.com"
             />
           }
-          title="Name"
-          subheader="match since August 8,2018"
+          title={` ${single.name}`}
+          subheader={`You matched on ${new Date().toDateString()}`}
         />
       </ListItemIcon>
-      <ListItemText inset primary={` ${single.name}`} />
+      <Typography component="h3">{` ${single.email}`}</Typography>
     </ListItem>
   ));
-};
-
-MatchItem.propTypes = {
-  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(MatchItem);

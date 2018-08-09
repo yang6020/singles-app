@@ -16,27 +16,26 @@ class App extends Component {
       </Router>
     );
   }
+  //DELETE IF NOT NEEDED
+  // constructor(props) {
+  //   super(props)
+  //   this.profileInput = React.createRef();
+  // }
 
-constructor(props) {
-  super(props)
-  this.profileInput = React.createRef();
+  // submitProfile = event => {
+  //   event.preventDefault();
+  //   let profileInput = this.profileInput.current;
+
+  //   if (profileInput.value) {
+
+  //     Meteor.call('singles.submitProfile', {
+  //       bios: profileInput.value,
+  //       owner: this.props.currentUserId
+  //     })
+  //     profileInput.value = '';
+  //   }
+  // }
 }
-
-submitProfile = event => {
-  event.preventDefault();
-  let profileInput = this.profileInput.current;
-
-  if (profileInput.value) {
-
-    Meteor.call('singles.submitProfile', {
-      bios: profileInput.value,
-      owner: this.props.currentUserId
-    })
-    profileInput.value = '';
-  }
-}
-}
-
 
 App.propTypes = {
   singles: PropTypes.array.isRequired,

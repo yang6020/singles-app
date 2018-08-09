@@ -4,7 +4,6 @@ import { Singles } from "../../../api/singles";
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import TestCard from "./../../components/TestCard/TestCard";
 import Steppers from "./../../components/Steppers/Steppers";
 import SwipeableViews from "react-swipeable-views";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
@@ -48,6 +47,8 @@ function Profile(props) {
         name={single[0] && single[0].name}
         bio={single[0] && single[0].bio}
         audio={<UploadForm />}
+        email={single[0] && single[0].email}
+        isProfile={true}
       />
     </div>
   );

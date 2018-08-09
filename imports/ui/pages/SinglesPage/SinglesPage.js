@@ -4,7 +4,6 @@ import { Singles } from "../../../api/singles";
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import TestCard from "./../../components/TestCard/TestCard";
 import Steppers from "./../../components/Steppers/Steppers";
 import SwipeableViews from "react-swipeable-views";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
@@ -39,6 +38,8 @@ function SinglesPage(props) {
           name={single.name}
           bio={single.bio}
           audio={<SinglesQueueCard userId={single._id} />}
+          email={single.email}
+          isProfile={false}
         />
       ))}
     </Grid>

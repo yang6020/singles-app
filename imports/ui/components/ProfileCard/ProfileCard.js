@@ -8,6 +8,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@material-ui/core";
+import { Singles } from "../../../api/singles";
+import { withRouter } from "react-router";
 
 const styles = {
   card: {
@@ -26,32 +28,33 @@ class ProfileCard extends React.Component {
     this.state = {
       name: this.props.name,
       bio: this.props.bio,
-      audio: this.props.audio
+      email: this.props.email,
+      audio: this.props.audio,
+      isProfile: this.props.isProfile
     };
   }
   render() {
     const { classes } = this.props;
     const owner = Meteor.userId();
+    let singleData = [];
+    {
+      if (!Singles.find({ _id: owner }).fetch()) {
+        singleData = [];
+      }
+      singleData = Singles.find({ _id: owner }).fetch();
+      console.log(Singles.find({ _id: owner }).fetch());
+    }
+
     return (
       <Card className={classes.card}>
-        <CardContent>
-          {this.state.audio}
-          <Typography gutterBottom variant="headline" component="h2">
-            {this.state.name}
-          </Typography>
-          <Typography
-            gutterBottom
-            variant="sub-heading"
-            style={{ color: "black" }}
-          >
-            {this.state.bio}
-          </Typography>
+        {this.state.isProfile && singleData.length === 0 ? (
           <div>
             <Form
               onSubmit={(values, form) => {
                 Meteor.call("singles.addSingle", {
                   name: values.name,
                   bio: values.bio,
+                  email: values.email,
                   _id: owner
                 });
                 form.reset();
@@ -96,6 +99,24 @@ class ProfileCard extends React.Component {
                         />
                       )}
                     </Field>
+                    <Field
+                      component="input"
+                      name="email"
+                      type="text"
+                      label="Email"
+                    >
+                      {({ input, meta }) => (
+                        <TextField
+                          style={{
+                            paddingTop: 20,
+                            width: "100%",
+                            paddingBottom: 20
+                          }}
+                          placeholder="Email"
+                          {...input}
+                        />
+                      )}
+                    </Field>
                     <div>
                       <Button
                         variant="contained"
@@ -111,7 +132,21 @@ class ProfileCard extends React.Component {
               )}
             />
           </div>
-        </CardContent>
+        ) : (
+          <CardContent>
+            {this.state.audio}
+            <Typography gutterBottom variant="headline" component="h2">
+              {this.state.name}
+            </Typography>
+            <Typography
+              gutterBottom
+              // variant="sub-heading"
+              style={{ color: "black" }}
+            >
+              {this.state.bio}
+            </Typography>
+          </CardContent>
+        )}
       </Card>
     );
   }
