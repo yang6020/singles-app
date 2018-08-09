@@ -5,8 +5,9 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { Form, Field } from "react-final-form";
+import { TextField, Button } from "@material-ui/core";
 
 const styles = {
   card: {
@@ -18,29 +19,102 @@ const styles = {
   }
 };
 
-const ProfileCard = ({ classes, name, bio, audio }) => {
-  return (
-    <Card className={classes.card}>
-      <CardContent>
-        {audio}
-        <Typography gutterBottom variant="headline" component="h2">
-          {name}
-        </Typography>
-        <Typography
-          gutterBottom
-          variant="sub-heading"
-          style={{ color: "black" }}
-        >
-          {bio}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button variant="outlined" color="secondary">
-          Right!
-        </Button>
-      </CardActions>
-    </Card>
-  );
-};
+class ProfileCard extends React.Component {
+  // ({ classes, name, bio, audio })
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: this.props.name,
+      bio: this.props.bio,
+      audio: this.props.audio
+    };
+  }
+  render() {
+    const { classes } = this.props;
+    const owner = Meteor.userId();
+    return (
+      <Card className={classes.card}>
+        <CardContent>
+          {this.state.audio}
+          <Typography gutterBottom variant="headline" component="h2">
+            {this.state.name}
+          </Typography>
+          <Typography
+            gutterBottom
+            variant="sub-heading"
+            style={{ color: "black" }}
+          >
+            {this.state.bio}
+          </Typography>
+          <div>
+            <Form
+              onSubmit={(values, form) => {
+                Meteor.call("singles.addSingle", {
+                  name: values.name,
+                  bio: values.bio,
+                  _id: owner
+                });
+                form.reset();
+              }}
+              initialValues={{}}
+              render={({
+                handleSubmit,
+                submitting,
+                pristine,
+                values,
+                form
+              }) => (
+                <form onSubmit={handleSubmit}>
+                  <div>
+                    <Field
+                      component="input"
+                      name="name"
+                      type="text"
+                      label="Name"
+                    >
+                      {({ input, meta }) => (
+                        <TextField
+                          style={{
+                            paddingTop: 20,
+                            width: "100%",
+                            paddingBottom: 20
+                          }}
+                          placeholder="Name"
+                          {...input}
+                        />
+                      )}
+                    </Field>
+                  </div>
+                  <div>
+                    <Field component="input" name="bio" type="text" label="Bio">
+                      {({ input, meta }) => (
+                        <TextField
+                          style={{ width: "100%" }}
+                          placeholder="Bio"
+                          multiline
+                          {...input}
+                        />
+                      )}
+                    </Field>
+                    <div>
+                      <Button
+                        variant="contained"
+                        disabled={submitting || pristine}
+                        color="primary"
+                        type="submit"
+                      >
+                        Match
+                      </Button>
+                    </div>
+                  </div>
+                </form>
+              )}
+            />
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+}
 
 export default withStyles(styles)(ProfileCard);

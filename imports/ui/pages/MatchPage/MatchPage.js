@@ -6,22 +6,23 @@ import MatchItem from "../../components/MatchItem/MatchItem";
 import { Matches } from "../../../api/matches";
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@material-ui/core";
+import { Singles } from "../../../api/singles";
 
 const styles = theme => ({
   root: {
     width: "100%",
     maxWidth: 700,
     backgroundColor: theme.palette.background.paper,
-    margin: '0 auto',
-    marginTop: '30px',
-  },
-  
+    margin: "0 auto",
+    marginTop: "30px"
+  }
 });
 
 function MatchPage(props) {
   const { classes } = props;
   const matchesTotal = Matches.find().fetch();
   const owner = Meteor.userId();
+  const singlesTotal = Singles.find().fetch();
 
   function filteredMatches(matchesTotal, owner) {
     return matchesTotal.filter(match => {
@@ -42,22 +43,26 @@ function MatchPage(props) {
       if (match.userId2 == owner && userSwipes.includes(match.userId1))
         matchResult.push(match);
     });
-
-    // for (let i = 0; i <= yourMatches.length; i++) {
-    //   if (yourMatches[i].userId1 === owner) {
-    //     if (yourMatches[i].find(swipedBack(yourMatches[i].userId2)) !== -1) {
-    //       matchResult.push(yourMatches[i]);
-    //     }
-    //   }
-    // }
-
     return matchResult;
+  }
+  function MatchedUser(matchResult, singles) {
+    const result = [];
+    singles.map(single => {
+      matchResult.map(match => {
+        if (match.userId1 === single._id) {
+          result.push(single);
+        }
+      });
+    });
+    return result;
   }
 
   return (
     <div className={classes.root}>
       <List component="nav">
-        <MatchItem matches={Match(matchesTotal, owner)} />
+        <MatchItem
+          singles={MatchedUser(Match(matchesTotal, owner), singlesTotal)}
+        />
       </List>
       <Form
         onSubmit={(values, form) => {
