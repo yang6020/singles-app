@@ -48,7 +48,8 @@ class ProfileCard extends React.Component {
     return (
       <Card className={classes.card}>
         {this.state.isProfile && singleData.length === 0 ? (
-          <div>
+          <CardContent>
+            {this.state.audio}
             <Form
               onSubmit={(values, form) => {
                 Meteor.call("singles.addSingle", {
@@ -131,7 +132,7 @@ class ProfileCard extends React.Component {
                 </form>
               )}
             />
-          </div>
+          </CardContent>
         ) : (
           <CardContent>
             {this.state.audio}
