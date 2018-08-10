@@ -8,6 +8,14 @@ const styles = theme => ({
     margin: "0 auto",
     marginTop: "1rem"
   },
+
+  profileAudio: {
+    textAlign: "center",
+    height: "30vh",
+    margin: "1rem",
+    position: "relative",
+    top: "15vh"
+  },
   profile: {
     width: "100%",
     margin: "1rem",
