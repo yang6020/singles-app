@@ -1,8 +1,6 @@
 const styles = theme => ({
   cardProfile: {
-    marginBottom: "1rem",
-    marginLeft: "1rem",
-    marginRight: "1rem",
+    margin: "1rem",
     height: "50vh"
   },
 
@@ -14,6 +12,10 @@ const styles = theme => ({
   //     height: 0,
   //     paddingTop: "56.25%" // 16:9
   //   },
+
+  profileForm: {
+    marginTop: "5rem"
+  },
 
   ProfileInput: {
     width: "100%",

@@ -43,9 +43,10 @@ class ProfileCard extends React.Component {
     return (
       <Card className={classes.cardProfile}>
         {this.state.isProfile ? (
-          <CardContent>
+          <CardContent className={classes.profileForm}>
             {this.state.audio}
             <Form
+              className={classes.profileInfo}
               onSubmit={(values, form) => {
                 Meteor.call(
                   "singles.addUpdateSingle",
@@ -71,6 +72,7 @@ class ProfileCard extends React.Component {
                 <form onSubmit={handleSubmit}>
                   <div>
                     <Field
+                      className={classes.profileTexts}
                       component="input"
                       name="name"
                       type="text"
@@ -81,9 +83,9 @@ class ProfileCard extends React.Component {
                         (
                           <TextField
                             style={{
-                              paddingTop: 20,
+                              paddingTop: 40,
                               width: "100%",
-                              paddingBottom: 20
+                              paddingBottom: 40
                             }}
                             placeholder={
                               userName.length == 0 || userName[0] == undefined
@@ -97,10 +99,20 @@ class ProfileCard extends React.Component {
                     </Field>
                   </div>
                   <div>
-                    <Field component="input" name="bio" type="text" label="Bio">
+                    <Field
+                      className={classes.profileTexts}
+                      component="input"
+                      name="bio"
+                      type="text"
+                      label="Bio"
+                    >
                       {({ input, meta }) => (
                         <TextField
-                          style={{ width: "100%" }}
+                          style={{
+                            paddingTop: 40,
+                            paddingBottom: 40,
+                            width: "100%"
+                          }}
                           placeholder={
                             userBio.length == 0 || userBio[0] == undefined
                               ? "Bio"
@@ -112,6 +124,7 @@ class ProfileCard extends React.Component {
                       )}
                     </Field>
                     <Field
+                      className={classes.profileTexts}
                       component="input"
                       name="email"
                       type="text"
@@ -120,9 +133,9 @@ class ProfileCard extends React.Component {
                       {({ input, meta }) => (
                         <TextField
                           style={{
-                            paddingTop: 20,
+                            paddingTop: 40,
                             width: "100%",
-                            paddingBottom: 20
+                            paddingBottom: 40
                           }}
                           placeholder={
                             userEmail.length == 0 || userEmail[0] == undefined
@@ -139,6 +152,11 @@ class ProfileCard extends React.Component {
                         disabled={submitting || pristine}
                         color="primary"
                         type="submit"
+                        style={{
+                          paddingTop: 40,
+                          paddingBottom: 40,
+                          width: "100%"
+                        }}
                       >
                         Submit
                       </Button>

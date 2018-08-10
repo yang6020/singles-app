@@ -7,7 +7,6 @@ import Button from "@material-ui/core/Button";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ClearIcon from "@material-ui/icons/Clear";
 import { withStyles } from "@material-ui/core";
-import styles from "./styles";
 
 const SinglesPage = props => {
   const { classes } = props;
@@ -23,16 +22,17 @@ const SinglesPage = props => {
   function swipeLeft(single, owner) {
     SinglesData.pop();
   }
+  // className={classes.masterRoot}
+  // className={classes.singlesContainer}
   return (
-    <Cards onEnd={console.log("end")} className={classes.masterRoot}>
+    <Cards onEnd={console.log("end")} style={{ width: "20000000" }}>
       {SinglesData.map((single, index) => (
         <Card
           key={index}
           onSwipeLeft={() => swipeLeft(single, owner)}
           onSwipeRight={() => swipeRight(single, owner)}
-          style={{ height: "600px" }}
-          className={classes.masterRoot}
         >
+          {/* className={classes.singlesCardContainer} */}
           <ProfileCard
             name={single.name}
             bio={single.bio}
@@ -40,6 +40,7 @@ const SinglesPage = props => {
             email={single.email}
             isProfile={false}
           />
+          {/* className={classes.profileCardSingles} */}
           {/* <Button
             variant="fab"
             color="primary"
@@ -60,4 +61,5 @@ const SinglesPage = props => {
   );
 };
 
-export default withStyles(styles)(SinglesPage);
+export default SinglesPage;
+// withStyles(styles)

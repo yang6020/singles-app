@@ -37,7 +37,7 @@ class SinglesQueueCard extends React.Component {
     // console.log("MyURLS1", audioUrls[2])
     // {console.log('Baam',ReactAudioPlayer)}
     return (
-      <div className>
+      <div>
         <ReactAudioPlayer
           src={userAudioUrl[0]} //we put zero in case there are more than one records
           controls

@@ -4,6 +4,11 @@ body {
   padding: 10px;
   font-family: sans-serif;
   height: 100vh;
+  width: 100vw;
+}
+
+::placeholder {
+  font-size: 2rem;
 }
 
 /* body {
