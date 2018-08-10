@@ -1,11 +1,18 @@
 const styles = () => ({
+  singlesContainer: {
+    height: "100vh"
+  },
+
+  singlesCardContainer: {
+    height: "100vh"
+  },
+
   masterRoot: {
-    margin: "20px",
-    position: "relative",
-    minHeight: "300px",
-    maxHeight: "100px",
-    width: "300px",
-    overflow: "hidden"
+    width: "900px !important"
+  },
+
+  profileCardSingles: {
+    height: "100vh"
   }
 });
 

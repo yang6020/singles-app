@@ -1,10 +1,9 @@
-
-
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Template } from "meteor/templating";
 import { Blaze } from "meteor/blaze";
 import { withTracker } from "meteor/react-meteor-data";
+import styes from "./styles";
 
 import Queue_musicIcon from "@material-ui/icons/Queuemusic";
 class LoginSignup extends Component {
@@ -16,14 +15,12 @@ class LoginSignup extends Component {
     this.renderForm();
   }
   renderForm() {
-  
     this.login = Blaze.render(
       Template.loginButtons,
       ReactDOM.findDOMNode(this.refs.login)
     );
   }
   cleanForm() {
-  
     Blaze.remove(this.login);
   }
   componentWillUnmount() {
@@ -51,5 +48,9 @@ export default (LoginSignupContainer = withTracker(() => {
   return {
     currentUser: Meteor.user()
   };
+<<<<<<< HEAD
 }),(LoginSignup));
 
+=======
+})(LoginSignup));
+>>>>>>> 20e4d89f8452b1bac9e0a959b181ac7cfadfd044

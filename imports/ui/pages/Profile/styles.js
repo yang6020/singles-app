@@ -11,16 +11,20 @@ const styles = theme => ({
 
   profileAudio: {
     textAlign: "center",
-    height: "30vh",
     margin: "1rem",
-    position: "relative",
-    top: "15vh"
-  },
-  profile: {
-    width: "100%",
-    margin: "1rem",
-    backgroundColor: "white"
+    height: "30vh"
   }
+
+  //   profileU: {
+  //     position: "absolute",
+  //     top: "vh"
+  //   },
+
+  // profileCard: {
+  //   width: "100%",
+  //   margin: "1rem",
+  //   backgroundColor: "white"
+  // }
 });
 
 export default styles;
