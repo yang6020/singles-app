@@ -4,8 +4,6 @@ import { Singles } from "../../../api/singles";
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import Steppers from "./../../components/Steppers/Steppers";
-import SwipeableViews from "react-swipeable-views";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import UploadForm from "../../components/uploadForm";
 
@@ -18,28 +16,11 @@ const styles = theme => ({
   }
 });
 
-// singlesQueue.map(single=>{
-//   <ProfileCard name={single.name} bio={single.bio} audio={AudioOfUser} isProfile={false}/>
-// })
-
-// <ProfileCard name={single.name} bio={single.bio} audio={AudioOfUser} />
-
 function Profile(props) {
   const { classes } = props;
   const owner = Meteor.userId();
   const SinglesData = Singles.find().fetch();
   let single = Singles.find({ _id: owner }).fetch();
-  // const AudioOfUser = Audio.find({userId:owner})
-
-  function showMeSingles() {
-    const singlesQueue = [];
-    SinglesData.filter(single => {
-      single._id !== owner;
-    }).map(single => {
-      singlesQueue.push(single);
-    });
-    return singlesQueue;
-  }
 
   return (
     <div className={classes.root}>

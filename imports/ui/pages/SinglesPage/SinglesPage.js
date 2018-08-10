@@ -1,13 +1,11 @@
 import React from "react";
 import SinglesQueueCard from "../../components/SinglesQueueCard/SinglesQueueCard";
 import { Singles } from "../../../api/singles";
-import { Form, Field } from "react-final-form";
-import { TextField, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import Steppers from "./../../components/Steppers/Steppers";
-import SwipeableViews from "react-swipeable-views";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
-import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ClearIcon from "@material-ui/icons/Clear";
 
 const styles = theme => ({
   root: {
@@ -18,31 +16,60 @@ const styles = theme => ({
   }
 });
 
-// singlesQueue.map(single=>{
-//   <ProfileCard name={single.name} bio={single.bio} audio={AudioOfUser} isProfile={false}/>
-// })
-
-// <ProfileCard name={single.name} bio={single.bio} audio={AudioOfUser} />
-
 function SinglesPage(props) {
   const { classes } = props;
   const owner = Meteor.userId();
-  // const SinglesData = Singles.find().fetch();
-  // const AudioOfUser = Audio.find({userId:owner})
   const SinglesData = Singles.find({ _id: { $ne: owner } }).fetch();
+  let stackedCards = [];
+  function clickedLeft(stackedCards, card) {
+    stackedCards.pop();
+    console.log(card);
+  }
+  function clickedRight(stackedCards, cardItem) {
+    console.log(stackedCards);
+    stackedCards = stackedCards.filter(card => card !== cardItem);
+    console.log(stackedCards);
+  }
 
   return (
-    <Grid>
-      {SinglesData.map(single => (
-        <ProfileCard
-          name={single.name}
-          bio={single.bio}
-          audio={<SinglesQueueCard userId={single._id} />}
-          email={single.email}
-          isProfile={false}
-        />
-      ))}
-    </Grid>
+    <div style={{ height: 500 }}>
+      {SinglesData.map(single => {
+        stackedCards.push(single);
+      })}
+      ,
+      {stackedCards.map(
+        card => (
+          console.log("card value is ", card),
+          (
+            <div style={{ position: "absolute" }}>
+              <ProfileCard
+                name={card.name}
+                bio={card.bio}
+                audio={<SinglesQueueCard userId={card._id} />}
+                email={card.email}
+                isProfile={false}
+              />
+              <Button
+                variant="fab"
+                color="primary"
+                className={classes.button}
+                onClick={() => clickedLeft(stackedCards, card)}
+              >
+                <ClearIcon />
+              </Button>
+              <Button
+                variant="fab"
+                color="secondary"
+                className={classes.button}
+                onClick={() => clickedRight(stackedCards, card)}
+              >
+                <FavoriteIcon />
+              </Button>
+            </div>
+          )
+        )
+      )}
+    </div>
   );
 }
 
