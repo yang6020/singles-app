@@ -10,7 +10,18 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  "singles.addSingle"(single) {
-    Singles.insert(single);
+  "singles.addUpdateSingle"(single, owner) {
+    Singles.update(
+      owner,
+      {
+        $set: {
+          _id: single._id,
+          name: single.name,
+          bio: single.bio,
+          email: single.email
+        }
+      },
+      { upsert: true }
+    );
   }
 });

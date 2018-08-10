@@ -36,29 +36,38 @@ class ProfileCard extends React.Component {
   render() {
     const { classes } = this.props;
     const owner = Meteor.userId();
-    let singleData = [];
+    const singleData = [];
     {
       if (!Singles.find({ _id: owner }).fetch()) {
-        singleData = [];
+        return;
       }
-      singleData = Singles.find({ _id: owner }).fetch();
-      console.log(Singles.find({ _id: owner }).fetch());
+      let single = Singles.find({ _id: owner }).fetch();
+      singleData.push(single);
     }
-
+    const userData = singleData[0];
+    const userName = userData.map(user => user.name);
+    const userBio = userData.map(user => user.bio);
+    const userEmail = userData.map(user => user.email);
+    const userIdConst = userData.map(user => user._id);
     return (
       <Card className={classes.card}>
-        {this.state.isProfile && singleData.length === 0 ? (
+        {this.state.isProfile ? (
           <CardContent>
             {this.state.audio}
             <Form
               onSubmit={(values, form) => {
-                Meteor.call("singles.addSingle", {
-                  name: values.name,
-                  bio: values.bio,
-                  email: values.email,
-                  _id: owner
-                });
+                Meteor.call(
+                  "singles.addUpdateSingle",
+                  {
+                    name: values.name,
+                    bio: values.bio,
+                    email: values.email,
+                    _id: owner
+                  },
+                  owner
+                );
                 form.reset();
+                window.location.reload();
               }}
               initialValues={{}}
               render={({
@@ -77,15 +86,22 @@ class ProfileCard extends React.Component {
                       label="Name"
                     >
                       {({ input, meta }) => (
-                        <TextField
-                          style={{
-                            paddingTop: 20,
-                            width: "100%",
-                            paddingBottom: 20
-                          }}
-                          placeholder="Name"
-                          {...input}
-                        />
+                        console.log("BAAAM", userName[0]),
+                        (
+                          <TextField
+                            style={{
+                              paddingTop: 20,
+                              width: "100%",
+                              paddingBottom: 20
+                            }}
+                            placeholder={
+                              userName.length == 0 || userName[0] == undefined
+                                ? "Name"
+                                : `${userName}`
+                            }
+                            {...input}
+                          />
+                        )
                       )}
                     </Field>
                   </div>
@@ -94,7 +110,11 @@ class ProfileCard extends React.Component {
                       {({ input, meta }) => (
                         <TextField
                           style={{ width: "100%" }}
-                          placeholder="Bio"
+                          placeholder={
+                            userBio.length == 0 || userBio[0] == undefined
+                              ? "Bio"
+                              : `${userBio}`
+                          }
                           multiline
                           {...input}
                         />
@@ -113,7 +133,11 @@ class ProfileCard extends React.Component {
                             width: "100%",
                             paddingBottom: 20
                           }}
-                          placeholder="Email"
+                          placeholder={
+                            userEmail.length == 0 || userEmail[0] == undefined
+                              ? "Email"
+                              : `${userEmail}`
+                          }
                           {...input}
                         />
                       )}
@@ -125,7 +149,7 @@ class ProfileCard extends React.Component {
                         color="primary"
                         type="submit"
                       >
-                        Match
+                        Submit
                       </Button>
                     </div>
                   </div>
