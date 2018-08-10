@@ -14,6 +14,12 @@ import SvgIcon from "@material-ui/core/SvgIcon";
 import SmsIcon from "@material-ui/icons/Sms";
 import HeaderMenue from "./HeaderMenue/HeaderMenue";
 import styles from "./styles";
+import Account_circleIcon from "@material-ui/icons/Accountcircle";
+import LoginSignup from "./../../pages/LoginSignup/LoginSignup.js";
+import Power_settings_new from "@material-ui/icons/Powersettingsnew";
+
+
+
 
 function HomeIcon(props) {
   return (
@@ -29,7 +35,24 @@ function ButtonAppBar(props) {
     <div>
       <AppBar className={classes.root} position="static">
         <Toolbar className={classes.barContainer}>
-          <HeaderMenue />
+            
+          <div className={classes.signIn}>
+            <Power_settings_new
+              className={classes.icon}
+              style={{ fontSize: 50 }}
+              color={"primary"}              
+            />
+            <LoginSignup className={classes.signIn} />
+
+          </div>  
+
+          <Link to="/profile">
+            <PersonIcon
+              className={classes.icon}
+              style={{ fontSize: 50 }}
+              color={"primary"}
+            />
+          </Link>
 
           <Link to="/singles">
             <Queue_musicIcon
