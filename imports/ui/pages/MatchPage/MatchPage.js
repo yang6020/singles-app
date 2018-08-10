@@ -66,68 +66,6 @@ function MatchPage(props) {
             singles={MatchedUser(Match(matchesTotal, owner), singlesTotal)}
           />
         </List>
-        <Form
-          onSubmit={(values, form) => {
-            Meteor.call("matches.addMatch", {
-              userId1: values.userId1,
-              userId2: values.userId2
-            });
-            // console.log(matchesTotal);
-            form.reset();
-          }}
-          initialValues={{}}
-          render={({ handleSubmit, submitting, pristine, values, form }) => (
-            <form onSubmit={handleSubmit}>
-              <div>
-                <Field
-                  component="input"
-                  name="userId1"
-                  type="text"
-                  label="User"
-                >
-                  {({ input, meta }) => (
-                    <TextField
-                      style={{
-                        paddingTop: 20,
-                        width: "100%",
-                        paddingBottom: 20
-                      }}
-                      placeholder="User"
-                      {...input}
-                    />
-                  )}
-                </Field>
-              </div>
-              <div>
-                <Field
-                  component="input"
-                  name="userId2"
-                  type="text"
-                  label="Swiped"
-                >
-                  {({ input, meta }) => (
-                    <TextField
-                      style={{ width: "100%" }}
-                      placeholder="Swiped on"
-                      multiline
-                      {...input}
-                    />
-                  )}
-                </Field>
-              </div>
-              <div style={{ paddingTop: 20 }}>
-                <Button
-                  variant="contained"
-                  disabled={submitting || pristine}
-                  color="primary"
-                  type="submit"
-                >
-                  Match
-                </Button>
-              </div>
-            </form>
-          )}
-        />
       </div>
       <ChatForm />
     </div>
