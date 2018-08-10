@@ -12,16 +12,8 @@ import blue from "@material-ui/core/colors/blue";
 import red from "@material-ui/core/colors/red";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import SmsIcon from "@material-ui/icons/Sms";
-import HeaderMenue from "./HeaderMenue/HeaderMenue"
-
-const styles = {
-  barContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    backgroundColor: "#4caf50"
-  }
-
-};
+import HeaderMenue from "./HeaderMenue/HeaderMenue";
+import styles from "./styles";
 
 function HomeIcon(props) {
   return (

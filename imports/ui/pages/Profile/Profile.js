@@ -6,21 +6,22 @@ import { TextField, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import UploadForm from "../../components/uploadForm";
+import styles from "./styles";
 
-const styles = theme => ({
-  root: {
-    width: "100%",
-    maxWidth: 360,
-    // backgroundColor: theme.palette.background.paper,
-    backgroundColor: "green",
-    margin: '0 auto',
-    marginTop: '200px'
+// const styles = theme => ({
+//   root: {
+//     width: "100%",
+//     maxWidth: 360,
+//     // backgroundColor: theme.palette.background.paper,
+//     backgroundColor: "green",
+//     margin: '0 auto',
+//     marginTop: '200px'
 
-  },
-  profile: {
+//   },
+//   profile: {
 
-  }
-});
+//   }
+// });
 
 function Profile(props) {
   const { classes } = props;

@@ -10,16 +10,7 @@ import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@material-ui/core";
 import { Singles } from "../../../api/singles";
 import { withRouter } from "react-router";
-
-const styles = {
-  card: {
-    maxWidth: 345
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%" // 16:9
-  }
-};
+import styles from "./styles";
 
 class ProfileCard extends React.Component {
   // ({ classes, name, bio, audio })
