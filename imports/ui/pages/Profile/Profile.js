@@ -8,21 +8,6 @@ import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import UploadForm from "../../components/uploadForm";
 import styles from "./styles";
 
-// const styles = theme => ({
-//   root: {
-//     width: "100%",
-//     maxWidth: 360,
-//     // backgroundColor: theme.palette.background.paper,
-//     backgroundColor: "green",
-//     margin: '0 auto',
-//     marginTop: '200px'
-
-//   },
-//   profile: {
-
-//   }
-// });
-
 function Profile(props) {
   const { classes } = props;
   const owner = Meteor.userId();
@@ -31,11 +16,14 @@ function Profile(props) {
 
   return (
     <div className={classes.root}>
+      <div className={classes.profileAudio}>
+        <UploadForm />
+      </div>
       <ProfileCard
         className={classes.profile}
         name={single[0] && single[0].name}
         bio={single[0] && single[0].bio}
-        audio={<UploadForm />}
+        // audio={<UploadForm />}
         email={single[0] && single[0].email}
         isProfile={true}
       />

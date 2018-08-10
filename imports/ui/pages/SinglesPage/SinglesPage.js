@@ -7,19 +7,7 @@ import Button from "@material-ui/core/Button";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ClearIcon from "@material-ui/icons/Clear";
 import { withStyles } from "@material-ui/core";
-// import styles from "./styles";
-
-const styles = () => ({
-  masterRoot: {
-    margin: "20px",
-    position: "relative",
-    minHeight: "300px",
-    maxHeight: "100px",
-    width: "300px",
-    overflow: "hidden",
-    background: "blue"
-  }
-});
+import styles from "./styles";
 
 const SinglesPage = props => {
   const { classes } = props;

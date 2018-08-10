@@ -41,7 +41,7 @@ class ProfileCard extends React.Component {
     const userEmail = userData.map(user => user.email);
     const userIdConst = userData.map(user => user._id);
     return (
-      <Card className={classes.card}>
+      <Card className={classes.cardProfile}>
         {this.state.isProfile ? (
           <CardContent>
             {this.state.audio}

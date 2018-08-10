@@ -1,10 +1,8 @@
 const styles = theme => ({
-  card: {
+  cardProfile: {
     marginBottom: "1rem",
     marginLeft: "1rem",
     marginRight: "1rem",
-    // position: "absolute",
-    bottom: "0",
     height: "50vh"
   },
 
@@ -12,10 +10,10 @@ const styles = theme => ({
   //     height: "100%"
   //   },
 
-  media: {
-    height: 0,
-    paddingTop: "56.25%" // 16:9
-  },
+  //   media: {
+  //     height: 0,
+  //     paddingTop: "56.25%" // 16:9
+  //   },
 
   ProfileInput: {
     width: "100%",
