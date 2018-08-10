@@ -6,9 +6,7 @@ const styles = theme => ({
     justifyContent: "space-between",
     backgroundColor: "#09AEF6"
   },
-  signIn: {
-    marginTop: "20px"
-  }
+
 });
 
 export default styles;

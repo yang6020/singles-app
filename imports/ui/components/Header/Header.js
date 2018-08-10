@@ -33,16 +33,18 @@ function ButtonAppBar(props) {
   const { classes } = props;
   return (
     <div>
+
       <AppBar className={classes.root} position="static">
         <Toolbar className={classes.barContainer}>
             
           <div className={classes.signIn}>
+          <Link to="/login">
             <Power_settings_new
               className={classes.icon}
               style={{ fontSize: 50 }}
               color={"primary"}              
             />
-            <LoginSignup className={classes.signIn} />
+           </Link>
 
           </div>  
 
