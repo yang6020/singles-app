@@ -12,7 +12,13 @@ const styles = theme => ({
     width: "100%",
     maxWidth: 360,
     // backgroundColor: theme.palette.background.paper,
-    backgroundColor: "green"
+    backgroundColor: "green",
+    margin: '0 auto',
+    marginTop: '200px'
+
+  },
+  profile: {
+
   }
 });
 
@@ -25,6 +31,7 @@ function Profile(props) {
   return (
     <div className={classes.root}>
       <ProfileCard
+        className={classes.profile}
         name={single[0] && single[0].name}
         bio={single[0] && single[0].bio}
         audio={<UploadForm />}

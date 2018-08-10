@@ -12,7 +12,8 @@ const styles = theme => ({
     width: "100%",
     maxWidth: 360,
     // backgroundColor: theme.palette.background.paper,
-    backgroundColor: "green"
+    backgroundColor: "green",
+    margin: "0 auto"
   }
 });
 
@@ -32,43 +33,18 @@ function SinglesPage(props) {
   }
 
   return (
-    <div style={{ height: 500 }}>
-      {SinglesData.map(single => {
-        stackedCards.push(single);
-      })}
-      ,
-      {stackedCards.map(
-        card => (
-          console.log("card value is ", card),
-          (
-            <div style={{ position: "absolute" }}>
-              <ProfileCard
-                name={card.name}
-                bio={card.bio}
-                audio={<SinglesQueueCard userId={card._id} />}
-                email={card.email}
-                isProfile={false}
-              />
-              <Button
-                variant="fab"
-                color="primary"
-                className={classes.button}
-                onClick={() => clickedLeft(stackedCards, card)}
-              >
-                <ClearIcon />
-              </Button>
-              <Button
-                variant="fab"
-                color="secondary"
-                className={classes.button}
-                onClick={() => clickedRight(stackedCards, card)}
-              >
-                <FavoriteIcon />
-              </Button>
-            </div>
-          )
-        )
-      )}
+    <div className={classes.root}>
+      <Grid>
+        {SinglesData.map(single => (
+          <ProfileCard
+            name={single.name}
+            bio={single.bio}
+            audio={<SinglesQueueCard userId={single._id} />}
+            email={single.email}
+            isProfile={false}
+          />
+        ))}
+      </Grid>
     </div>
   );
 }
