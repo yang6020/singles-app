@@ -1,41 +1,50 @@
+import Cards, { Card } from "react-swipe-deck";
 import React from "react";
-import SinglesQueueCard from "../../components/SinglesQueueCard/SinglesQueueCard";
 import { Singles } from "../../../api/singles";
-import { Form, Field } from "react-final-form";
-import { TextField, Button } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
-import Steppers from "./../../components/Steppers/Steppers";
-import SwipeableViews from "react-swipeable-views";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
-import Grid from "@material-ui/core/Grid";
+import SinglesQueueCard from "../../components/SinglesQueueCard/SinglesQueueCard";
+import Button from "@material-ui/core/Button";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ClearIcon from "@material-ui/icons/Clear";
+import { withStyles } from "@material-ui/core";
+// import styles from "./styles";
 
-const styles = theme => ({
-  root: {
-    width: "100%",
-    maxWidth: 360,
-    // backgroundColor: theme.palette.background.paper,
-    backgroundColor: "green",
-    margin: '0 auto',
+const styles = () => ({
+  masterRoot: {
+    margin: "20px",
+    position: "relative",
+    minHeight: "300px",
+    maxHeight: "100px",
+    width: "300px",
+    overflow: "hidden",
+    background: "blue"
   }
 });
 
-// singlesQueue.map(single=>{
-//   <ProfileCard name={single.name} bio={single.bio} audio={AudioOfUser} isProfile={false}/>
-// })
-
-// <ProfileCard name={single.name} bio={single.bio} audio={AudioOfUser} />
-
-function SinglesPage(props) {
+const SinglesPage = props => {
   const { classes } = props;
   const owner = Meteor.userId();
-  // const SinglesData = Singles.find().fetch();
-  // const AudioOfUser = Audio.find({userId:owner})
   const SinglesData = Singles.find({ _id: { $ne: owner } }).fetch();
-
+  function swipeRight(single, owner) {
+    Meteor.call("matches.addMatch", {
+      userId1: owner,
+      userId2: single._id
+    }),
+      SinglesData.pop();
+  }
+  function swipeLeft(single, owner) {
+    SinglesData.pop();
+  }
   return (
-    <div className={classes.root}>
-      <Grid>
-        {SinglesData.map(single => (
+    <Cards onEnd={console.log("end")} className={classes.masterRoot}>
+      {SinglesData.map((single, index) => (
+        <Card
+          key={index}
+          onSwipeLeft={() => swipeLeft(single, owner)}
+          onSwipeRight={() => swipeRight(single, owner)}
+          style={{ height: "600px" }}
+          className={classes.masterRoot}
+        >
           <ProfileCard
             name={single.name}
             bio={single.bio}
@@ -43,10 +52,24 @@ function SinglesPage(props) {
             email={single.email}
             isProfile={false}
           />
-        ))}
-      </Grid>
-    </div>
+          {/* <Button
+            variant="fab"
+            color="primary"
+            onClick={this.state.onSwipeLeft}
+          >
+            <ClearIcon />
+          </Button>
+          <Button
+            variant="fab"
+            color="secondary"
+            onClick={this.state.onSwipeRight}
+          >
+            <FavoriteIcon />
+          </Button> */}
+        </Card>
+      ))}
+    </Cards>
   );
-}
+};
 
 export default withStyles(styles)(SinglesPage);
