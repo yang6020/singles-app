@@ -5,6 +5,10 @@ const styles = theme => ({
     width: "100vw",
     bottom: 0,
     justifyContent: "space-evenly"
+  },
+
+  icon: {
+    margin: "2rem"
   }
 });
 
