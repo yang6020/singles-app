@@ -167,18 +167,25 @@ class ProfileCard extends React.Component {
             />
           </CardContent>
         ) : (
-          <CardContent>
-            {this.state.audio}
-            <Typography gutterBottom variant="headline" component="h2">
-              {this.state.name}
-            </Typography>
-            <Typography
-              gutterBottom
-              // variant="sub-heading"
-              style={{ color: "black" }}
-            >
-              {this.state.bio}
-            </Typography>
+          <CardContent className={classes.profileCardContent}>
+            <div className={classes.profileAudio}>{this.state.audio}</div>
+            <div className={classes.profileNameBio}>
+              <Typography
+                className={classes.profileName}
+                gutterBottom
+                variant="headline"
+                component="h2"
+              >
+                {this.state.name}
+              </Typography>
+              <Typography
+                className={classes.profileBio}
+                gutterBottom
+                // variant="sub-heading"
+              >
+                {this.state.bio}
+              </Typography>
+            </div>
           </CardContent>
         )}
       </Card>

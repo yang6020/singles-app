@@ -1,14 +1,17 @@
 body {
-  background-color: #212121;
+  background-color: white;
   color: white;
-  padding: 10px;
+  margin: 0;
   font-family: sans-serif;
   height: 100vh;
-  width: 100vw;
 }
 
 ::placeholder {
   font-size: 2rem;
+}
+
+.react-audio-player {
+  text-align: center;
 }
 
 /* body {

@@ -1,20 +1,31 @@
 const styles = theme => ({
   cardProfile: {
-    margin: "1rem",
-    height: "50vh"
+    margin: "4rem"
   },
 
-  //   cardcontent: {
-  //     height: "100%"
-  //   },
+  profileCardContent: {
+    textAlign: "center"
+  },
 
-  //   media: {
-  //     height: 0,
-  //     paddingTop: "56.25%" // 16:9
-  //   },
+  profileAudio: {
+    height: "20vh",
+    borderBottom: "2px solid grey"
+  },
+
+  profileName: {
+    fontSize: "10rem"
+  },
+
+  profileNameBio: {
+    textAlign: "left"
+  },
+
+  profileBio: {
+    fontSize: "8rem"
+  },
 
   profileForm: {
-    marginTop: "5rem"
+    margin: "5rem"
   },
 
   ProfileInput: {

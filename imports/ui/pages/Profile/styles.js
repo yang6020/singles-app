@@ -12,7 +12,7 @@ const styles = theme => ({
   profileAudio: {
     textAlign: "center",
     margin: "1rem",
-    height: "30vh"
+    height: "18vh"
   }
 
   //   profileU: {

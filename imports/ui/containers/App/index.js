@@ -9,6 +9,7 @@ import Routes from "../../../../imports/ui/routes/index";
 import "../../../../client/main.html";
 import { Matches } from "../../../api/matches";
 import { Messages } from "../../../api/chat.js";
+import FooterMenu from "../../components/FooterMenu/FooterMenu";
 class App extends Component {
   render() {
     return (

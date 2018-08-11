@@ -5,6 +5,7 @@ import LoginSignup from "../pages/LoginSignup/LoginSignup";
 import React, { Fragment } from "react";
 import Header from "../components/Header/Header";
 import MatchPage from "../pages/MatchPage/MatchPage";
+import FooterMenu from "../components/FooterMenu/FooterMenu";
 export default () => (
   <Fragment>
     <Header />
@@ -15,5 +16,6 @@ export default () => (
       <Route exact path="/matches" component={MatchPage} />
       <Redirect to="/login" />
     </Switch>
+    <FooterMenu />
   </Fragment>
 );

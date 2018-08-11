@@ -8,16 +8,7 @@ import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@material-ui/core";
 import { Singles } from "../../../api/singles";
 import ChatForm from "../../components/chatForm.js";
-
-const styles = theme => ({
-  root: {
-    width: "100%",
-    maxWidth: 700,
-    backgroundColor: theme.palette.background.paper,
-    margin: "0 auto",
-    marginTop: "30px"
-  }
-});
+import styles from "./style";
 
 function MatchPage(props) {
   const { classes } = props;
@@ -67,7 +58,7 @@ function MatchPage(props) {
           />
         </List>
       </div>
-      <ChatForm />
+      {/* <ChatForm /> */}
     </div>
   );
 }
