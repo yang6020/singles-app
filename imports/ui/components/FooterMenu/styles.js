@@ -3,7 +3,8 @@ const styles = theme => ({
     height: "10vh",
     position: "absolute",
     width: "100vw",
-    bottom: "0"
+    bottom: 0,
+    justifyContent: "space-evenly"
   }
 });
 
