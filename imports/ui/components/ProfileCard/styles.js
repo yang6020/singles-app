@@ -8,8 +8,9 @@ const styles = theme => ({
   },
 
   profileAudio: {
-    height: "20vh",
-    borderBottom: "2px solid grey"
+    height: "35vh",
+    borderBottom: "2px solid grey",
+    backgroundColor: "black"
   },
 
   profileName: {

@@ -39,7 +39,7 @@ class LoginSignup extends Component {
           flexDirection: "column"
         }}
       >
-        <Queue_musicIcon style={{ fontSize: 450 }} color={"primary"} />
+        <Queue_musicIcon style={{ fontSize: 450, color: "white" }} />
         <svg
           style={{
             position: "relative",

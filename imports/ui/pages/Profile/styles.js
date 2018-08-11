@@ -9,16 +9,9 @@ const styles = theme => ({
     marginTop: "1rem"
   },
 
-  profileAudio: {
-    textAlign: "center",
-    margin: "1rem",
-    height: "18vh"
+  profile: {
+    top: "40vh"
   }
-
-  //   profileU: {
-  //     position: "absolute",
-  //     top: "vh"
-  //   },
 
   // profileCard: {
   //   width: "100%",

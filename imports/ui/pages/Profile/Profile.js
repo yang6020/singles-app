@@ -16,14 +16,12 @@ function Profile(props) {
 
   return (
     <div className={classes.root}>
-      <div className={classes.profileAudio}>
-        <UploadForm />
-      </div>
+      <div className={classes.profileAudio}>{/* <UploadForm /> */}</div>
       <ProfileCard
         className={classes.profile}
         name={single[0] && single[0].name}
         bio={single[0] && single[0].bio}
-        // audio={<UploadForm />}
+        audio={<UploadForm />}
         email={single[0] && single[0].email}
         isProfile={true}
       />
