@@ -21,11 +21,17 @@ const MatchItem = ({ singles, classes }) => {
               email="mathews.kyle@gmail.com"
             />
           }
-          title={` ${single.name}`}
-          subheader={`You matched on ${new Date().toDateString()}`}
+          title={<div className={classes.matchName}>{single.name}</div>}
+          subheader={
+            <div
+              className={classes.matchDate}
+            >{`You matched on ${new Date().toDateString()}`}</div>
+          }
         />
       </ListItemIcon>
-      <Typography component="h3">{` ${single.email}`}</Typography>
+      <Typography component="h3">
+        {<span className={classes.matchEmail}>{single.email}</span>}
+      </Typography>
     </ListItem>
   ));
 };

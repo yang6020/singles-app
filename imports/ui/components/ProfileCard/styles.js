@@ -14,7 +14,7 @@ const styles = theme => ({
   },
 
   profileName: {
-    fontSize: "10rem"
+    fontSize: "7rem"
   },
 
   profileNameBio: {
@@ -22,7 +22,7 @@ const styles = theme => ({
   },
 
   profileBio: {
-    fontSize: "8rem"
+    fontSize: "5rem"
   },
 
   profileForm: {
