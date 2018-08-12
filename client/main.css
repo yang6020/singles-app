@@ -12,6 +12,8 @@ body {
 
 .react-audio-player {
   text-align: center;
+  position: relative;
+  top: 15rem;
 }
 
 /* body {
