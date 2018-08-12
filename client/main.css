@@ -16,3 +16,16 @@ body {
   top: 15rem;
 }
 
+.accounts-dialog {
+  height: 30vh;
+  width: 80vw;
+  position: relative !important;
+  background: inherit;
+  color: white;
+  font-size: 3rem;
+  border: none;
+}
+
+.login-link-text {
+  font-size: 3rem;
+}

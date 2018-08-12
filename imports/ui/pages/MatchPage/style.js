@@ -6,7 +6,7 @@ const styles = () => ({
     marginTop: "4rem",
     marginBottom: "4rem",
     borderTop: "1px solid black",
-    height: "70vh"
+    height: "78vh"
   }
 });
 
