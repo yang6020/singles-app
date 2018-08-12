@@ -1,39 +1,16 @@
 <head>
-  <title>Andrei Meteor-Files: File Streaming</title>
+  <title>SinglesApp</title>
 </head>
 
 <body>
   <div id="app"></div>
-
 </body>
-
-<template name="message">
-  <li class="message">
-    <div class="username">{{username}}</div>
-    <div class="message-text">{{messageText}}</div>
-  </li>
-</template>
-
 
 <template name="sounds">
   {{#if user}} {{> uploadForm }} {{> files }} {{/if}}
 </template>
 
-
-
-
-
-
-<template name="chatwindow">
-  <ul class="message-window">
-    {{#each recentMessages}} {{>message}} {{/each}}
-  </ul>
-</template>
-
-
-
 <template name="uploadForm">
-
   {{#with currentUpload}} Uploading
   <b>{{file.name}}</b>:
   <span id="progress">{{progress.get}}%</span>

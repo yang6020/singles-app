@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../../../../imports/ui/routes/index";
 import "../../../../client/main.html";
 import { Matches } from "../../../api/matches";
-import { Messages } from "../../../api/chat.js";
+
 import FooterMenu from "../../components/FooterMenu/FooterMenu";
 class App extends Component {
   render() {
@@ -55,13 +55,12 @@ export default withTracker(() => {
   Meteor.subscribe("singles");
   Meteor.subscribe("matches");
   Meteor.subscribe("files.audio.all");
-  Meteor.subscribe("messages");
+
   return {
     currentUser: Meteor.user(), // NEW!
     currentUserId: Meteor.userId(), // NEW!
     singles: Singles.find({ owner: Meteor.userId() }).fetch(),
     matches: Matches.find().fetch(),
-    audio: Audio.find().fetch(),
-    messages: Messages.find().fetch()
+    audio: Audio.find().fetch()
   };
 })(App);

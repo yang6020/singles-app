@@ -21,6 +21,5 @@ react-meteor-data
 accounts-ui
 accounts-password
 ostrio:files
-accounts-facebook
-facebook-config-ui
+
 
