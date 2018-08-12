@@ -1,8 +1,6 @@
 import { FilesCollection } from "meteor/ostrio:files";
 import { Meteor } from "meteor/meteor";
 
-
-
 export const Audio = new FilesCollection({
   // debug: true,
   disableUpload: false,

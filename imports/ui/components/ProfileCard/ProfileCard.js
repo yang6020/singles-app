@@ -13,7 +13,6 @@ import { withRouter } from "react-router";
 import styles from "./styles";
 
 class ProfileCard extends React.Component {
-  // ({ classes, name, bio, audio })
   constructor(props) {
     super(props);
     this.state = {

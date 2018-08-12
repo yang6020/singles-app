@@ -77,15 +77,11 @@ Template.uploadForm.events({
             () => {
               return (
                 console.log("file removed"),
-                (upload = Audio.insert(
-                  {
-                    file: e.currentTarget.files[0],
-                    streams: "dynamic",
-                    chunkSize: "dynamic"
-                  },
-
-                  console.log("UPLOADED?")
-                ))
+                (upload = Audio.insert({
+                  file: e.currentTarget.files[0],
+                  streams: "dynamic",
+                  chunkSize: "dynamic"
+                }))
               );
             }
           );

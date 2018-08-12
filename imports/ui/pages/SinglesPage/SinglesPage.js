@@ -22,8 +22,6 @@ const SinglesPage = props => {
   function swipeLeft(single, owner) {
     SinglesData.pop();
   }
-  // className={classes.masterRoot}
-  // className={classes.singlesContainer}
   return (
     <Cards onEnd={console.log("end")} style={{ width: "20000000" }}>
       {SinglesData.map((single, index) => (
@@ -32,7 +30,7 @@ const SinglesPage = props => {
           onSwipeLeft={() => swipeLeft(single, owner)}
           onSwipeRight={() => swipeRight(single, owner)}
         >
-          {/* className={classes.singlesCardContainer} */}
+         
           <ProfileCard
             name={single.name}
             bio={single.bio}
@@ -40,21 +38,6 @@ const SinglesPage = props => {
             email={single.email}
             isProfile={false}
           />
-          {/* className={classes.profileCardSingles} */}
-          {/* <Button
-            variant="fab"
-            color="primary"
-            onClick={this.state.onSwipeLeft}
-          >
-            <ClearIcon />
-          </Button>
-          <Button
-            variant="fab"
-            color="secondary"
-            onClick={this.state.onSwipeRight}
-          >
-            <FavoriteIcon />
-          </Button> */}
         </Card>
       ))}
     </Cards>

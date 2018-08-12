@@ -7,7 +7,7 @@ import { Matches } from "../../../api/matches";
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@material-ui/core";
 import { Singles } from "../../../api/singles";
-import ChatForm from "../../components/chatForm.js";
+
 import styles from "./style";
 
 function MatchPage(props) {
@@ -58,7 +58,6 @@ function MatchPage(props) {
           />
         </List>
       </div>
-      {/* <ChatForm /> */}
     </div>
   );
 }
