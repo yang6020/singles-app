@@ -65,9 +65,10 @@ class LoginSignup extends Component {
               letterSpacing={0}
               alignmentBaseline="before-edge"
               transform="matrix(1 0 0 1 22.97297297297291 -33.879725150704076)"
-              style={{ lineHeight: "100%" }}
+              style={{ lineHeight: "100%", color: "black"}}
               xmlSpace="preserve"
               dominantBaseline="text-before-edge"
+              
             >
               <tspan
                 x="160.34"
@@ -136,6 +137,7 @@ class LoginSignup extends Component {
               fill="#fff"
               fillOpacity={1}
               filter="url(#shadow10457603)"
+              
             >
               <tspan
                 x="160.34"

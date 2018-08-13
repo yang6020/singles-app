@@ -12,8 +12,8 @@ body {
 
 .react-audio-player {
   text-align: center;
-  /* position: relative;
-  top: 15rem; */
+  position: relative;
+  top: 15rem;
 }
 
 .accounts-dialog {
@@ -21,7 +21,7 @@ body {
   width: 80vw;
   position: relative !important;
   background: inherit;
-  color: white;
+  color:#6689CA;
   font-size: 3rem;
   border: none;
 }
