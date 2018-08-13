@@ -25,12 +25,14 @@ class SinglesQueueCard extends React.Component {
         }.mp3`
     );
 
+    console.log("OBJ", userAudioUrl);
 
-
+    
     return (
       <div>
         <ReactAudioPlayer
-          src={userAudioUrl[0]} 
+          src={userAudioUrl[0]} //we put zero in case there are more than one records
+          controls
           onPlay={e => console.log(e, "onPlay")}
           loop={true}
           volume={1.0}
