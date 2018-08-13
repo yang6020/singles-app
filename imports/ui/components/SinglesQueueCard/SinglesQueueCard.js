@@ -6,9 +6,6 @@ import uploadForm from "../uploadForm";
 class SinglesQueueCard extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   userId: this.props
-    // };
   }
   render() {
     const targetUser = this.props.userId.userId;
