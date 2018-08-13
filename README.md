@@ -1,5 +1,5 @@
 # Singles-app
-Singles (sing and mingle) is a meteor-based application that was inspired by Tinder and designed for people who value how people sound over how they look. A user can upload a short recording of him/her singing and other users will swipe depending on preference.
+Singles (sing and mingle) is a meteor-based application that was inspired by Tinder and designed for people who value how people sound over how they look. Users can upload a short recording of themselves singing for anyone to swipe. 
 
 ![singles1](https://user-images.githubusercontent.com/37827068/44049506-2949da40-9ee9-11e8-9eb4-d4d347042f24.gif)
 
