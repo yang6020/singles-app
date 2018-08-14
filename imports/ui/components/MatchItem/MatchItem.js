@@ -19,6 +19,7 @@ const MatchItem = ({ singles, classes }) => {
             <Gravatar
               className={classes.avatar}
               email="mathews.kyle@gmail.com"
+              
             />
           }
           title={<div className={classes.matchName}>{single.name}</div>}

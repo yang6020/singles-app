@@ -26,6 +26,15 @@ body {
   border: none;
 }
 
+
+input {
+  font-size: 2rem 
+}
+
 .login-link-text {
   font-size: 3rem;
 }
+
+
+
+

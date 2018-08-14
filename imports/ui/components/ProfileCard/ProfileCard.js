@@ -154,7 +154,8 @@ class ProfileCard extends React.Component {
                         style={{
                           paddingTop: 40,
                           paddingBottom: 40,
-                          width: "100%"
+                          width: "100%",
+                          fontSize:"3rem"
                         }}
                       >
                         Submit
