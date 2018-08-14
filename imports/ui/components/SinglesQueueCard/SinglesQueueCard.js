@@ -6,9 +6,12 @@ import uploadForm from "../uploadForm";
 class SinglesQueueCard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      userId: this.props
+    };
   }
   render() {
-    const targetUser = this.props.userId.userId;
+    const targetUser = this.state.userId.userId;
     let audiosObject = Audio.collection._collection._docs;
     let arrayOfObj = Object.values(audiosObject._map);
     let userAudioObj = arrayOfObj.filter(audio => audio.userId === targetUser);
@@ -24,6 +27,7 @@ class SinglesQueueCard extends React.Component {
 
     console.log("OBJ", userAudioUrl);
 
+    
     return (
       <div>
         <ReactAudioPlayer
