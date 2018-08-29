@@ -48,7 +48,6 @@ Template.sounds.helpers({
 
 Template.files.helpers({
   audioFile() {
-    console.log("Andreisadfasdfasd", Audio.collection._collection._docs);
     return Audio.findOne({ userId: Meteor.userId() });
   },
   allAudioFiles() {
@@ -88,8 +87,6 @@ Template.uploadForm.events({
 
       upload.on("end", function(fileObj) {
         console.log("File Object", fileObj);
-
-        alert('File "' + fileObj.name + '" successfully uploaded');
       });
 
       upload.start();

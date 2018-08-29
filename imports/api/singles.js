@@ -1,5 +1,6 @@
 import { Mongo } from "meteor/mongo";
 import { Meteor } from "meteor/meteor";
+import SimpleSchema from "simpl-schema";
 
 export const Singles = new Mongo.Collection("singles");
 
@@ -9,19 +10,44 @@ if (Meteor.isServer) {
   });
 }
 
+singlesSchema = new SimpleSchema({
+  _id: {
+    type: String,
+    optional: true
+  },
+  name: {
+    type: String,
+    optional: true
+  },
+  email: {
+    type: String,
+    optional: true
+  },
+  bio: {
+    type: String,
+    optional: true,
+    max: 350
+  }
+});
+
 Meteor.methods({
   "singles.addUpdateSingle"(single, owner) {
-    Singles.update(
-      owner,
-      {
-        $set: {
-          _id: single._id,
-          name: single.name,
-          bio: single.bio,
-          email: single.email
-        }
-      },
-      { upsert: true }
-    );
+    singlesSchema.validate(single);
+    try {
+      Singles.update(
+        owner,
+        {
+          $set: {
+            _id: single._id,
+            name: single.name,
+            bio: single.bio,
+            email: single.email
+          }
+        },
+        { upsert: true }
+      );
+    } catch (e) {
+      throw e;
+    }
   }
 });

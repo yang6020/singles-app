@@ -20,7 +20,9 @@ class ProfileCard extends React.Component {
       bio: this.props.bio,
       email: this.props.email,
       audio: this.props.audio,
-      isProfile: this.props.isProfile
+      isProfile: this.props.isProfile,
+      error: false,
+      errorMsg: ""
     };
   }
   render() {
@@ -55,10 +57,12 @@ class ProfileCard extends React.Component {
                     email: values.email,
                     _id: owner
                   },
-                  owner
+                  (error, result) => {
+                    error &&
+                      this.setState({ error: true, errorMsg: error.message });
+                  }
                 );
                 form.reset();
-                window.location.reload();
               }}
               initialValues={{}}
               render={({
@@ -78,22 +82,19 @@ class ProfileCard extends React.Component {
                       label="Name"
                     >
                       {({ input, meta }) => (
-                        console.log("BAAAM", userName[0]),
-                        (
-                          <TextField
-                            style={{
-                              paddingTop: 40,
-                              width: "100%",
-                              paddingBottom: 40
-                            }}
-                            placeholder={
-                              userName.length == 0 || userName[0] == undefined
-                                ? "Name"
-                                : `${userName}`
-                            }
-                            {...input}
-                          />
-                        )
+                        <TextField
+                          style={{
+                            paddingTop: 40,
+                            width: "100%",
+                            paddingBottom: 40
+                          }}
+                          placeholder={
+                            userName.length == 0 || userName[0] == undefined
+                              ? "Name"
+                              : `${userName}`
+                          }
+                          {...input}
+                        />
                       )}
                     </Field>
                   </div>
@@ -155,11 +156,18 @@ class ProfileCard extends React.Component {
                           paddingTop: 40,
                           paddingBottom: 40,
                           width: "100%",
-                          fontSize:"3rem"
+                          fontSize: "3rem"
                         }}
                       >
                         Submit
                       </Button>
+                    </div>
+                    <div>
+                      {this.state.error && (
+                        <p style={{ color: "red", fontSize: 30 }}>
+                          {this.state.errorMsg}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </form>
@@ -178,11 +186,7 @@ class ProfileCard extends React.Component {
               >
                 {this.state.name}
               </Typography>
-              <Typography
-                className={classes.profileBio}
-                gutterBottom
-                // variant="sub-heading"
-              >
+              <Typography className={classes.profileBio} gutterBottom>
                 {this.state.bio}
               </Typography>
             </div>

@@ -1,6 +1,7 @@
 const styles = theme => ({
   cardProfile: {
-    margin: "4rem"
+    margin: "4rem",
+    maxHeight: "90%"
   },
 
   profileCardContent: {
@@ -22,7 +23,11 @@ const styles = theme => ({
   },
 
   profileBio: {
-    fontSize: "5rem"
+    marginTop: -10,
+    fontSize: "3rem",
+    lineHeight: 1,
+    overflow: "scroll",
+    maxWidth: "100%"
   },
 
   profileForm: {

@@ -25,6 +25,7 @@
     "react-router-dom": "^4.3.1",
     "react-sound": "^1.2.0",
     "react-swipe-deck": "^0.1.17",
+    "simpl-schema": "^1.5.3",
     "webfontloader": "^1.6.28"
   },
   "meteor": {
